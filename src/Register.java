@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import org.json.JSONObject;
 
 import java.awt.Color;
         import java.awt.Dimension;
@@ -137,13 +138,11 @@ public class Register extends JFrame {
             }});
 
         login.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 toLogin();
             }});
 
         register.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 //判断password和confirm是否一致
                 if(!password.getText().equals(confirm.getText())) {
@@ -166,5 +165,14 @@ public class Register extends JFrame {
 
     // 注册方法
     public void forRegister(String studentID, String name, String password) {
+        JSONObject obj = new JSONObject();
+        obj.put("studentID", studentID);
+        obj.put("password", password);
+        obj.put("name", name);
+        String url = "http://localhost:8080/register";
+        //发送 POST 请求
+        String str = HttpRequest.sendPost( url, obj.toString());
+        System.out.println(str);
+        JOptionPane.showMessageDialog(null, str);
     }
 }
