@@ -1,4 +1,7 @@
 
+import org.json.JSONObject;
+import org.json.*;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -136,6 +139,22 @@ public class Login extends JFrame {
 
     // 登录方法
     public void forLogin(String studentID, String name,String pwd) {
+        JSONObject obj = new JSONObject();
+        obj.put("studentID", studentID);
+        obj.put("password", pwd);
+        obj.put("name", name);
+        String url = "http://localhost:8080/login";
+        //发送 POST 请求
+        String str = HttpRequest.sendPost( url, obj.toString());
+//        System.out.println(str);
+        JSONObject res = new JSONObject(str);
+        if(res.get("error").equals(0)) {
+            this.dispose();
+            new MainFrame();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, res.get("msg"));
+        }
     }
 
     // 注册方法

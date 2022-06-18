@@ -45,7 +45,7 @@ public class MainFrame extends JFrame{
     private void init() {
         this.setTitle("场馆预约系统");
         this.setSize(1200, 700);
-        this.setLocation(300, 100);
+        this.setLocation(0, 0);
         this.setJMenuBar(jmb);
         jmb.add(jm1);
         jmb.add(jm2);
