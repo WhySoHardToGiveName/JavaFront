@@ -150,7 +150,7 @@ public class Login extends JFrame {
         JSONObject res = new JSONObject(str);
         if(res.get("error").equals(0)) {
             this.dispose();
-            new MainFrame();
+            new MainFrame(studentID);
         }
         else{
             JOptionPane.showMessageDialog(null, res.get("msg"));

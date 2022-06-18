@@ -30,8 +30,9 @@ public class MainFrame extends JFrame{
     private JMenuItem jm5 = new JMenu("通知");
     private JPanel contentPanel;
     private int currentPanel = 1;
+    public static String loginID;
 
-    public MainFrame(){
+    public MainFrame(String loginID){
         this.init();
         this.addListener();
         this.setVisible(true);
@@ -40,6 +41,7 @@ public class MainFrame extends JFrame{
         MainFrame.this.add(contentPanel);
         contentPanel.setBounds(0, 0, 1200, 700);
         contentPanel.setVisible(true);
+        this.loginID = loginID;
     }
 
     private void init() {

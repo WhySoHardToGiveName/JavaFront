@@ -1,13 +1,18 @@
+import org.json.JSONObject;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MyFriend extends JPanel {
     private JLabel title = new JLabel("我的好友");
     private JTextField newFriendID = new JTextField();
     private JButton addFriend = new JButton("添加好友");
     private JList friendList;
-
+    private JLabel label = new JLabel("请输入学号添加好友");
 
     public MyFriend() {
         this.init();
@@ -18,6 +23,8 @@ public class MyFriend extends JPanel {
     private void init() {
         this.setLayout(null);
         this.add(title);
+        this.add(label);
+        label.setBounds(300, 35, 200, 100);
         title.setBounds(30, 10, 150, 50);
         Font f = new Font("微软雅黑", Font.BOLD, 30);
         title.setFont(f);
@@ -29,7 +36,7 @@ public class MyFriend extends JPanel {
         textSet(newFriendID);
         DefaultListModel<Object> l1 = new DefaultListModel<>();
         l1.addElement("20373324 陈百铭");
-        l1.addElement("456");
+        l1.addElement("20373376 李昱熙");
         friendList = new JList(l1);
         friendList.setBounds(30, 110, 150, 300);
         this.add(friendList);
@@ -39,7 +46,7 @@ public class MyFriend extends JPanel {
         field.setPreferredSize(new Dimension(150, 28));
         MatteBorder border = new MatteBorder(0, 0, 2, 0, new Color(192, 192, 192));
         field.setBorder(border);
-        field.setText("请输入学号添加好友");
+        field.setText("");
     }
     private void addListener() {
         addFriend.addActionListener(e -> {
@@ -50,13 +57,18 @@ public class MyFriend extends JPanel {
                 JFrame frame = new JFrame("添加好友");
                 frame.setSize(300, 200);
                 frame.setLocation(500, 300);
-                JLabel label = new JLabel("是否添加20373324陈百铭为好友？");
+                JLabel label = new JLabel("<html><body>是否添加学号为:<br/>"+id+"<br/>的用户为好友？</body></html>");
                 JButton yes = new JButton("是");
                 JButton no = new JButton("否");
                 frame.setLayout(null);
                 frame.add(label);
-                label.setBounds(40, 10, 200, 30);
+                label.setBounds(40, 10, 200, 100);
                 frame.add(yes);
+                yes.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        forAddFriend(MainFrame.loginID, id);
+                    }});
                 yes.setBounds(50, 100, 60, 30);
                 frame.add(no);
                 no.addActionListener(e1 -> frame.dispose());
@@ -64,5 +76,48 @@ public class MyFriend extends JPanel {
                 frame.setVisible(true);
             }
         });
+    }
+
+    //添加好友
+    public void forAddFriend(String studentIDA, String studentIDB) {
+//        System.out.println(studentIDA+":"+studentIDB);
+        JSONObject obj = new JSONObject();
+        obj.put("studentIDA", studentIDA);
+        obj.put("studentIDA", studentIDB);
+        String url = "http://localhost:8080/"
+        //发送 POST 请求
+        String str = HttpRequest.sendPost( url, obj.toString());
+        JSONObject res = new JSONObject(str);
+        if(res.get("error").equals(0)){
+
+
+        }
+        else {
+            JOptionPane.showMessageDialog(null, res.get("msg"));
+        }
+    }
+
+    //获取好友
+    public DefaultListModel<Object> forGetFriends(String studentID) {
+        JSONObject obj = new JSONObject();
+        obj.put("studentIDA", studentID);
+        String url = "http://localhost:8080/"
+        //发送 POST 请求
+        String str = HttpRequest.sendPost( url, obj.toString());
+        JSONObject res = new JSONObject(str);
+        DefaultListModel<Object> l1 = new DefaultListModel<>();
+        if(res.get("error").equals(0)){
+            String[] arr = (String[]) res.get("friendList");
+            for(String tmp: arr){
+                String name = tmp.split(":")[1];
+                String id = tmp.split(":")[0];
+                String entry = id + " " + name;
+                l1.addElement(entry);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, res.get("msg"));
+        }
+        return l1;
     }
 }
