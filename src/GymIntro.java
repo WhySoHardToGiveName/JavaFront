@@ -28,7 +28,7 @@ public class GymIntro extends JFrame {
     }
     public void init() {
         this.setTitle(name);
-        this.setSize(500, 800);
+        this.setSize(500, 600);
         this.setLocation(700, 150);
         this.setLayout(null);
         nameLabel = new JLabel(name);
@@ -50,10 +50,10 @@ public class GymIntro extends JFrame {
         numLabel = new JLabel("场地数量：" + num);
         this.add(numLabel);
         numLabel.setBounds(30, 310, 200, 20);
-        minLabel = new JLabel("最小预约人数：" + min);
+        minLabel = new JLabel("预约人数下限：" + min);
         this.add(minLabel);
         minLabel.setBounds(30, 340, 200, 20);
-        maxLabel = new JLabel("最大预约人数：" + max);
+        maxLabel = new JLabel("场地人数上限：" + max);
         this.add(maxLabel);
         maxLabel.setBounds(30, 370, 200, 20);
         introLabel = new JLabel(intro);
