@@ -13,6 +13,7 @@ public class MyFriend extends JPanel {
     private JButton addFriend = new JButton("添加好友");
     private JList friendList;
     private JLabel label = new JLabel("请输入学号添加好友");
+    private DefaultListModel<Object> l1;
 
     public MyFriend() {
         this.init();
@@ -34,9 +35,7 @@ public class MyFriend extends JPanel {
         this.add(addFriend);
         addFriend.setBounds(180, 70, 100, 30);
         textSet(newFriendID);
-        DefaultListModel<Object> l1 = new DefaultListModel<>();
-        l1.addElement("20373324 陈百铭");
-        l1.addElement("20373376 李昱熙");
+        l1 = forGetFriends(MainFrame.loginID);
         friendList = new JList(l1);
         friendList.setBounds(30, 110, 150, 300);
         this.add(friendList);
@@ -68,6 +67,7 @@ public class MyFriend extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         forAddFriend(MainFrame.loginID, id);
+//                        l1.addElement("1111");
                     }});
                 yes.setBounds(50, 100, 60, 30);
                 frame.add(no);
@@ -84,12 +84,11 @@ public class MyFriend extends JPanel {
         JSONObject obj = new JSONObject();
         obj.put("studentIDA", studentIDA);
         obj.put("studentIDA", studentIDB);
-        String url = "http://localhost:8080/"
+        String url = "http://localhost:8080/";
         //发送 POST 请求
         String str = HttpRequest.sendPost( url, obj.toString());
         JSONObject res = new JSONObject(str);
         if(res.get("error").equals(0)){
-
 
         }
         else {
@@ -99,13 +98,14 @@ public class MyFriend extends JPanel {
 
     //获取好友
     public DefaultListModel<Object> forGetFriends(String studentID) {
+        DefaultListModel<Object> l1 = new DefaultListModel<>();
+        /*
         JSONObject obj = new JSONObject();
         obj.put("studentIDA", studentID);
-        String url = "http://localhost:8080/"
+        String url = "http://localhost:8080/";
         //发送 POST 请求
         String str = HttpRequest.sendPost( url, obj.toString());
         JSONObject res = new JSONObject(str);
-        DefaultListModel<Object> l1 = new DefaultListModel<>();
         if(res.get("error").equals(0)){
             String[] arr = (String[]) res.get("friendList");
             for(String tmp: arr){
@@ -118,6 +118,9 @@ public class MyFriend extends JPanel {
         else {
             JOptionPane.showMessageDialog(null, res.get("msg"));
         }
+        */
+        l1.addElement("20373376 李昱熙");
+        l1.addElement("20373324 陈百铭");
         return l1;
     }
 }
