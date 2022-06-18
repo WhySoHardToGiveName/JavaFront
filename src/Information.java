@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Information extends JPanel {
     private JLabel title = new JLabel("场馆信息");
@@ -26,6 +28,7 @@ public class Information extends JPanel {
 
     public Information() {
         this.init();
+        this.addListener();
         this.setVisible(true);
     }
 
@@ -67,6 +70,49 @@ public class Information extends JPanel {
         volleyballLabel.setBounds(500, 360, 220, 170);
         this.add(tabletennisLabel);
         tabletennisLabel.setBounds(900, 360, 220, 170);
-
+    }
+    private void addListener() {
+        badmintonLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("羽毛球", "src/img/badminton.jpg", "9：00-21:00", "否", 10, 2, 4,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
+        basketballLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("篮球", "src/img/basketball2.jpg", "8：00-22:00", "是", 15, 1, 10,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
+        footballLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("足球", "src/img/football2.jpg", "8：00-22:00", "是", 3, 1, 20,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
+        tennisLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("网球", "src/img/tennis2.jpg", "8：00-22:00", "否", 3, 2, 4,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
+        volleyballLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("排球", "src/img/volleyball2.jpg", "8：00-22:00", "是", 3, 1, 15,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
+        tabletennisLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new GymIntro("乒乓球", "src/img/tabletennis2.jpg", "9：00-21:00", "否", 10, 2, 4,
+                        "<html><body>数据版本<br/>v1.0.0<br/>啊<br/>啊<br/>啊</body></html>");
+            }
+        });
     }
 }
