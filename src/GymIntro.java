@@ -30,18 +30,18 @@ public class GymIntro extends JFrame {
     public void init() {
         this.setTitle(name);
         this.setSize(800, 1000);
-        this.setLocation(700, 100);
+        this.setLocation(650, 20);
         this.setLayout(null);
         nameLabel = new JLabel(name);
         Font f = new Font("微软雅黑", Font.BOLD, 30);
         nameLabel.setFont(f);
         nameLabel.setForeground(Color.BLACK);
         this.add(nameLabel);
-        nameLabel.setBounds(200, 10, 150, 40);
+        nameLabel.setBounds(360, 10, 150, 40);
         pictureIcon = new ImageIcon(picture);
         pictureLabel = new JLabel(pictureIcon);
         this.add(pictureLabel);
-        pictureLabel.setBounds(140, 60, 220, 170);
+        pictureLabel.setBounds(290, 60, 220, 170);
         openTimeLabel = new JLabel("开放时间：" + openTime);
         this.add(openTimeLabel);
         openTimeLabel.setBounds(30, 250, 200, 20);
