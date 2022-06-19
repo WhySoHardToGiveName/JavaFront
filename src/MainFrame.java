@@ -25,8 +25,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends JFrame{
     private JMenuBar jmb = new JMenuBar();
-    private JMenuItem jm1 = new JMenu("场馆信息");
-    private JMenuItem jm2 = new JMenu("场馆预约");
+    private JMenuItem jm1 = new JMenu("场馆预约");
     private JMenuItem jm3 = new JMenu("我的预约");
     private JMenuItem jm4 = new JMenu("我的好友");
     private JMenuItem jm5 = new JMenu("通知");
@@ -52,7 +51,6 @@ public class MainFrame extends JFrame{
         this.setLocation(400, 200);
         this.setJMenuBar(jmb);
         jmb.add(jm1);
-        jmb.add(jm2);
         jmb.add(jm3);
         jmb.add(jm4);
         jmb.add(jm5);
@@ -73,21 +71,6 @@ public class MainFrame extends JFrame{
                     }
                     contentPanel = new Information();
                     currentPanel = 1;
-                    MainFrame.this.add(contentPanel);
-                    contentPanel.setBounds(0, 0, 1200, 700);
-                    contentPanel.setVisible(true);
-                }
-            }
-        });
-        jm2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (currentPanel != 2) {
-                    if(contentPanel != null) {
-                        MainFrame.this.remove(contentPanel);
-                    }
-                    contentPanel = new Reserve();
-                    currentPanel = 2;
                     MainFrame.this.add(contentPanel);
                     contentPanel.setBounds(0, 0, 1200, 700);
                     contentPanel.setVisible(true);
