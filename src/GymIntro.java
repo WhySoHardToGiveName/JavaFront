@@ -13,6 +13,7 @@ public class GymIntro extends JFrame {
     private JLabel nameLabel, pictureLabel, openTimeLabel, supportLabel, numLabel, minLabel, maxLabel;
     private JLabel introLabel;
     private ImageIcon pictureIcon;
+    private JPanel reservePanel;
 
     public GymIntro(String name, String picture, String openTime, String support, int num, int min, int max, String intro) {
         this.name = name;
@@ -28,8 +29,8 @@ public class GymIntro extends JFrame {
     }
     public void init() {
         this.setTitle(name);
-        this.setSize(500, 600);
-        this.setLocation(700, 150);
+        this.setSize(800, 1000);
+        this.setLocation(700, 100);
         this.setLayout(null);
         nameLabel = new JLabel(name);
         Font f = new Font("微软雅黑", Font.BOLD, 30);
@@ -58,6 +59,18 @@ public class GymIntro extends JFrame {
         maxLabel.setBounds(30, 370, 200, 20);
         introLabel = new JLabel(intro);
         this.add(introLabel);
-        introLabel.setBounds(30, 400, 400, 100);
+        introLabel.setBounds(250, 250, 400, 100);
+        String tomorrow = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date(new java.util.Date().getTime() + 24 * 60 * 60 * 1000));
+        JLabel dateLabel = new JLabel("预约日期：" + tomorrow);
+        this.add(dateLabel);
+        dateLabel.setBounds(250, 380, 200, 20);
+        reservePanel = new ReserveGrid(5, "羽毛球");
+        this.add(reservePanel);
+        reservePanel.setBounds(30, 430, 700, 400);
+        for (int i = 0; i < 13; i++) {
+            JLabel label = new JLabel((9+i) + ":00");
+            this.add(label);
+            label.setBounds(55+i*52, 410, 40, 20);
+        }
     }
 }
