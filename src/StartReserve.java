@@ -152,9 +152,9 @@ public class StartReserve extends JFrame {
             JOptionPane.showMessageDialog(null, res.get("msg"));
         }
     }
-    public void forReserve(ArrayList<String> selectedList, boolean type, String reservationTime, String stadiumName) {
+    public void forReserve(ArrayList<String> studentList, boolean type, String reservationTime, String stadiumName) {
         JSONObject obj = new JSONObject();
-        obj.put("selectedList", selectedList);
+        obj.put("studentList", studentList);
         obj.put("type", type);
         obj.put("reservationTime", reservationTime);
         obj.put("stadiumName", stadiumName);
