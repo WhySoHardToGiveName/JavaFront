@@ -75,14 +75,14 @@ public class Information extends JPanel {
         badmintonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new GymIntro("羽毛球", "src/img/badminton.jpg", "9：00-21:00", "否", 10, 2, 4,
+                new GymIntro("羽毛球", "src/img/badminton.jpg", "9：00-21:00", "否", 8, 2, 4,
                         "<html><body>场地介绍： 羽毛球馆整体环境宽大舒适优雅。馆内拥有10块专业塑胶场地，采用专业侧面排光技术，双层龙骨硬木地板铺装方式，PU塑胶弹性地面，能有效地避免、减少运动损伤。在您充分运动之后，场地边也有充足的长椅，为您提供舒适的休息条件。</body></html>");
             }
         });
         basketballLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new GymIntro("篮球", "src/img/basketball2.jpg", "9：00-21:00", "是", 15, 1, 10,
+                new GymIntro("篮球", "src/img/basketball2.jpg", "9：00-21:00", "是", 8, 1, 10,
                         "<html><body>场地介绍： 篮球场的设计整体风格明亮宽阔、简洁通透，具现代感。馆区设有两片标准篮球场，设施齐全。场馆可用于球队训练、篮球比赛、各种篮球训练营；场馆顶部配有64盏防炫灯，符合照度标准。</body></html>");
             }
         });
@@ -110,7 +110,7 @@ public class Information extends JPanel {
         tabletennisLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new GymIntro("乒乓球", "src/img/tabletennis2.jpg", "9：00-21:00", "否", 10, 2, 4,
+                new GymIntro("乒乓球", "src/img/tabletennis2.jpg", "9：00-21:00", "否", 8, 2, 4,
                         "<html><body>场地介绍： 乒乓球场地面积合计1200平方米。馆内布局合理、设计新颖 , 配有30张标准乒乓球桌挡板若干，设有器材租赁处、男女更衣室以及电视、音响等系统，能够满足众多乒乓球爱好者的需求。</body></html>");
             }
         });

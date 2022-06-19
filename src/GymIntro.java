@@ -64,9 +64,9 @@ public class GymIntro extends JFrame {
         JLabel dateLabel = new JLabel("预约日期：" + tomorrow);
         this.add(dateLabel);
         dateLabel.setBounds(250, 380, 200, 20);
-        reservePanel = new ReserveGrid(5, "羽毛球");
+        reservePanel = new ReserveGrid(num, name);
         this.add(reservePanel);
-        reservePanel.setBounds(30, 430, 700, 400);
+        reservePanel.setBounds(30, 430, 700, 450);
         for (int i = 0; i < 13; i++) {
             JLabel label = new JLabel((9+i) + ":00");
             this.add(label);
