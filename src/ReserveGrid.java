@@ -20,7 +20,7 @@ public class ReserveGrid extends JPanel {
         grid.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
         this.add(grid);
         for(int i = 0;i < row * 12;i++){
-            JButton btn = new JButton("<html><body>包场或<br/>拼场</body></html>");
+            JButton btn = new JButton("<html><body>可包场<br/>或拼场</body></html>");
             btn.setBackground(Color.WHITE);
             btn.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
             btn.setSize(new Dimension(50,50));
