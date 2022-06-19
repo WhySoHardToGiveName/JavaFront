@@ -21,14 +21,16 @@ public class StartReserve extends JFrame {
     private JLabel infoLabel;
     private ArrayList<String> selectedList = new ArrayList<>();
     private JButton pinButton, baoButton;
+    private GymIntro gym;
 
-    public StartReserve(int maxNum, int minNum, String courtName, boolean canPin, boolean canBao, String startTime) {
+    public StartReserve(int maxNum, int minNum, String courtName, boolean canPin, boolean canBao, String startTime, GymIntro gym) {
         this.maxNum = maxNum;
         this.minNum = minNum;
         this.courtName = courtName;
         this.canPin = canPin;
         this.canBao = canBao;
         this.startTime = startTime;
+        this.gym = gym;
         this.init();
         this.addListener();
         this.setVisible(true);
@@ -89,7 +91,6 @@ public class StartReserve extends JFrame {
                     } else {
                         selectedList.remove(friendList[finalI].split(":")[0]);
                     }
-                    System.out.println(selectedList);
                 }
             });
             JLabel label = new JLabel(friendList[i]);
@@ -115,7 +116,7 @@ public class StartReserve extends JFrame {
                     if(selectedList.size() > maxNum) {
                         JOptionPane.showMessageDialog(null, "最多可邀请" + (maxNum - 1) + "人");
                     } else {
-                        forReserve(selectedList, false, startTime, courtName);
+                        forReserve(selectedList, false, startTime, courtName, gym);
                     }
                 }});
         }
@@ -128,7 +129,7 @@ public class StartReserve extends JFrame {
                     } else if(selectedList.size() > maxNum) {
                         JOptionPane.showMessageDialog(null, "最多可邀请" + (maxNum - 1) + "人");
                     } else {
-                        forReserve(selectedList, true, startTime, courtName);
+                        forReserve(selectedList, true, startTime, courtName, gym);
                     }
                 }});
         }
@@ -152,7 +153,7 @@ public class StartReserve extends JFrame {
             JOptionPane.showMessageDialog(null, res.get("msg"));
         }
     }
-    public void forReserve(ArrayList<String> selectedList, boolean type, String reservationTime, String stadiumName) {
+    public void forReserve(ArrayList<String> selectedList, boolean type, String reservationTime, String stadiumName, GymIntro gym) {
         JSONObject obj = new JSONObject();
         obj.put("selectedList", selectedList);
         obj.put("type", type);
@@ -165,6 +166,7 @@ public class StartReserve extends JFrame {
         if(res.get("error").equals(0)){
             JOptionPane.showMessageDialog(null, "预约成功");
             this.dispose();
+            gym.dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, res.get("msg"));

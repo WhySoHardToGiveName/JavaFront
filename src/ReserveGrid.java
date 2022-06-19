@@ -14,13 +14,15 @@ public class ReserveGrid extends JPanel {
     private String name;
     private JPanel grid;
     private String support;
+    private GymIntro gym;
 
-    public ReserveGrid(int row, String name, String support, int maxNum, int minNum) {
+    public ReserveGrid(int row, String name, String support, int maxNum, int minNum, GymIntro gym) {
         this.row = row;
         this.name = name;
         this.support = support;
         this.maxNum = maxNum;
         this.minNum = minNum;
+        this.gym = gym;
         this.init();
         this.setVisible(true);
     }
@@ -59,7 +61,7 @@ public class ReserveGrid extends JPanel {
                             btn.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+ finalI +"号",false,true,Integer.toString(finalJ+9));
+                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+ finalI +"号",false,true,Integer.toString(finalJ+9), gym);
                                 }});
                         }
                         else{
@@ -74,7 +76,7 @@ public class ReserveGrid extends JPanel {
                             btn.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+finalI+"号",true,true,Integer.toString(finalJ+9));
+                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+finalI+"号",true,true,Integer.toString(finalJ+9), gym);
                                 }});
                         }
                         else if (canPin.getInt(j)==1 && canBao.getInt(j)==0){
@@ -83,7 +85,7 @@ public class ReserveGrid extends JPanel {
                             btn.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+finalI+"号",true,false,Integer.toString(finalJ+9));
+                                    new StartReserve(maxNum-count.getInt(finalJ), minNum,name+finalI+"号",true,false,Integer.toString(finalJ+9), gym);
                                 }});
                         }
                         else{

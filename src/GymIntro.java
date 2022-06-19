@@ -51,7 +51,7 @@ public class GymIntro extends JFrame {
         numLabel = new JLabel("场地数量：" + num);
         this.add(numLabel);
         numLabel.setBounds(30, 310, 200, 20);
-        minLabel = new JLabel("预约人数下限：" + min);
+        minLabel = new JLabel("包场人数下限：" + min);
         this.add(minLabel);
         minLabel.setBounds(30, 340, 200, 20);
         maxLabel = new JLabel("场地人数上限：" + max);
@@ -64,7 +64,7 @@ public class GymIntro extends JFrame {
         JLabel dateLabel = new JLabel("预约日期：" + tomorrow);
         this.add(dateLabel);
         dateLabel.setBounds(250, 380, 200, 20);
-        reservePanel = new ReserveGrid(num, name, support, max, min);
+        reservePanel = new ReserveGrid(num, name, support, max, min, this);
         this.add(reservePanel);
         reservePanel.setBounds(30, 430, 700, 450);
         for (int i = 0; i < 13; i++) {
@@ -72,5 +72,8 @@ public class GymIntro extends JFrame {
             this.add(label);
             label.setBounds(55+i*52, 410, 40, 20);
         }
+    }
+    public void close() {
+        this.dispose();
     }
 }
