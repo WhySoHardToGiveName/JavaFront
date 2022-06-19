@@ -1,5 +1,7 @@
+import org.json.JSONArray;
 import org.json.JSONObject;
-
+//import net.sf.json.JSONObject;
+//import net.sf.json.JSONArray;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
@@ -67,7 +69,7 @@ public class MyFriend extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         forAddFriend(MainFrame.loginID, id);
-//                        l1.addElement("1111");
+                        frame.dispose();
                     }});
                 yes.setBounds(50, 100, 60, 30);
                 frame.add(no);
@@ -83,13 +85,13 @@ public class MyFriend extends JPanel {
 //        System.out.println(studentIDA+":"+studentIDB);
         JSONObject obj = new JSONObject();
         obj.put("studentIDA", studentIDA);
-        obj.put("studentIDA", studentIDB);
-        String url = "http://localhost:8080/";
+        obj.put("studentIDB", studentIDB);
+        String url = "http://localhost:8080/addFriends";
         //发送 POST 请求
         String str = HttpRequest.sendPost( url, obj.toString());
         JSONObject res = new JSONObject(str);
         if(res.get("error").equals(0)){
-
+            l1.addElement(studentIDB+" "+forGetNameByID(studentIDB));
         }
         else {
             JOptionPane.showMessageDialog(null, res.get("msg"));
@@ -99,28 +101,42 @@ public class MyFriend extends JPanel {
     //获取好友
     public DefaultListModel<Object> forGetFriends(String studentID) {
         DefaultListModel<Object> l1 = new DefaultListModel<>();
-        /*
+
         JSONObject obj = new JSONObject();
-        obj.put("studentIDA", studentID);
-        String url = "http://localhost:8080/";
+        obj.put("studentID", studentID);
+        String url = "http://localhost:8080/getStudentInfoByID";
         //发送 POST 请求
         String str = HttpRequest.sendPost( url, obj.toString());
         JSONObject res = new JSONObject(str);
         if(res.get("error").equals(0)){
-            String[] arr = (String[]) res.get("friendList");
-            for(String tmp: arr){
+//            String[] arr = MyFriend.objectToStringArray(res.get("friendList"));
+            JSONArray jsonArray = res.getJSONArray("friendList");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String tmp = jsonArray.getString(i);
                 String name = tmp.split(":")[1];
                 String id = tmp.split(":")[0];
                 String entry = id + " " + name;
                 l1.addElement(entry);
+//                System.out.println(entry);
             }
         }
         else {
             JOptionPane.showMessageDialog(null, res.get("msg"));
         }
-        */
-        l1.addElement("20373376 李昱熙");
-        l1.addElement("20373324 陈百铭");
+
+//        l1.addElement("20373376 李昱熙");
+//        l1.addElement("20373324 陈百铭");
         return l1;
+    }
+
+    //根据ID获取姓名
+    public String forGetNameByID(String studentID) {
+        JSONObject obj = new JSONObject();
+        obj.put("studentID", studentID);
+        String url = "http://localhost:8080/getStudentInfoByID";
+        //发送 POST 请求
+        String str = HttpRequest.sendPost( url, obj.toString());
+        JSONObject res = new JSONObject(str);
+        return (String) res.get("name");
     }
 }
