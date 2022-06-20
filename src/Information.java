@@ -76,7 +76,7 @@ public class Information extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 GymIntro gym = new GymIntro("羽毛球场", "src/img/badminton.jpg", "9：00-21:00", "否", 8, 2, 4,
-                        "<html><body>场地介绍： 羽毛球馆整体环境宽大舒适优雅。馆内拥有10块专业塑胶场地，采用专业侧面排光技术，双层龙骨硬木地板铺装方式，PU塑胶弹性地面，能有效地避免、减少运动损伤。在您充分运动之后，场地边也有充足的长椅，为您提供舒适的休息条件。</body></html>");
+                        "<html><body>场地介绍： 羽毛球馆整体环境宽大舒适优雅。馆内拥有8块专业塑胶场地，采用专业侧面排光技术，双层龙骨硬木地板铺装方式，PU塑胶弹性地面，能有效地避免、减少运动损伤。在您充分运动之后，场地边也有充足的长椅，为您提供舒适的休息条件。</body></html>");
             }
         });
         basketballLabel.addMouseListener(new MouseAdapter() {

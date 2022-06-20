@@ -29,6 +29,7 @@ public class MainFrame extends JFrame{
     private JMenuItem jm3 = new JMenu("我的预约");
     private JMenuItem jm4 = new JMenu("我的好友");
     private JMenuItem jm5 = new JMenu("通知");
+    private JMenuItem jm6 = new JMenu("退出登录");
     private JPanel contentPanel;
     private int currentPanel = 1;
     public static String loginID;
@@ -54,12 +55,13 @@ public class MainFrame extends JFrame{
         jmb.add(jm3);
         jmb.add(jm4);
         jmb.add(jm5);
+        jmb.add(jm6);
     }
 
     private void addListener() {
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                new Login();
+                System.exit(0);
             }
         });
         jm1.addMouseListener(new MouseAdapter() {
@@ -119,6 +121,19 @@ public class MainFrame extends JFrame{
                     MainFrame.this.add(contentPanel);
                     contentPanel.setBounds(0, 0, 1200, 700);
                     contentPanel.setVisible(true);
+                }
+            }
+        });
+        jm6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //弹出确认框
+                int result = JOptionPane.showConfirmDialog(null, "确定退出登录？", "提示", JOptionPane.YES_NO_OPTION);
+                if(result == JOptionPane.YES_OPTION) {
+                    //关闭窗口
+                    MainFrame.this.dispose();
+                    //跳转到登录界面
+                    new Login();
                 }
             }
         });
