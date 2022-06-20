@@ -155,7 +155,7 @@ public class StartReserve extends JFrame {
     }
     public void forReserve(ArrayList<String> selectedList, boolean type, String reservationTime, String stadiumName, GymIntro gym) {
         JSONObject obj = new JSONObject();
-        obj.put("selectedList", selectedList);
+        obj.put("studentList", selectedList);
         obj.put("type", type);
         obj.put("reservationTime", reservationTime);
         obj.put("stadiumName", stadiumName);

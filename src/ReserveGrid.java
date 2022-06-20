@@ -1,5 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sun.applet.Main;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -35,7 +36,9 @@ public class ReserveGrid extends JPanel {
         // 发送请求查询场地预约信息
         JSONObject obj = new JSONObject();
         obj.put("placeName", name);
-        String url = "http://localhost:8080/getReserveInfo";
+        obj.put("studentID", MainFrame.loginID);
+        System.out.println(name+","+ MainFrame.loginID);
+        String url = "http://localhost:8080/inquireReserve";
         //发送 POST 请求
         String str = HttpRequest.sendPost( url, obj.toString());
         JSONObject res = new JSONObject(str);
@@ -57,7 +60,7 @@ public class ReserveGrid extends JPanel {
                         if(canBao.getInt(j)==1){
                             btn = new JButton("<html>可包场</html>");
                             btn.setBackground(Color.CYAN);
-                            System.out.println(name+j+"号");
+//                            System.out.println(name+j+"号");
                             btn.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {

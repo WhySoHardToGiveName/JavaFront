@@ -9,7 +9,7 @@ public class MyReserve extends JPanel {
     private JLabel title = new JLabel("我的预约");
     private JList resvList;
     private DefaultListModel<Object> l2;
-    private JLabel label = new JLabel("场地状态        预约开始时间        预约结束时间        当前人数:        当前成员姓名        ");
+    private JLabel label = new JLabel("场地名称                场地状态        预约开始时间        预约结束时间        当前人数:        当前成员姓名        ");
 
     public MyReserve() {
         this.init();
@@ -70,6 +70,7 @@ public class MyReserve extends JPanel {
         if(res.get("error").equals(0)){
 //            String[] arr = MyFriend.objectToStringArray(res.get("friendList"));
             JSONArray jsonArray = res.getJSONArray("orderList");
+//            System.out.println(jsonArray);
             for (int i = 0; i < jsonArray.length(); i++) {
                 String tmp = jsonArray.getString(i);
                 String[] token = tmp.split(" ");
@@ -78,13 +79,20 @@ public class MyReserve extends JPanel {
                 for(String s: token){
                     cnt++;
 //                    System.out.println(s);
-                    str1 += s.split(":")[1];
-                    if(s.split(":").length>2){
+                    if(cnt==1)
+                        str1 += s;
+                    else
+                        str1 += s.split(":")[1];
+                    if(cnt!=1 && s.split(":").length>2){
                         str1 += ":00";
                     }
                     switch (cnt){
                         case 1:
-                            str1 += "  ";
+                            if(s.startsWith("羽毛")|| s.startsWith("乒乓")){
+                                System.out.println("匹配");
+                                break;
+                            }
+                            str1 += "   ";
                             break;
                         case 2:
                         case 3:
