@@ -59,7 +59,7 @@ public class MainFrame extends JFrame{
     private void addListener() {
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                new Login();
             }
         });
         jm1.addMouseListener(new MouseAdapter() {

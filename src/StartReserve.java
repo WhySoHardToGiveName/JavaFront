@@ -65,14 +65,14 @@ public class StartReserve extends JFrame {
         }
         this.add(baoLabel);
         baoLabel.setBounds(50, 80, 500, 15);
-        //forGetFriends(MainFrame.loginID);
-        selectedList.add(MainFrame.loginID);
+        forGetFriends(MainFrame.loginID);
+        /*selectedList.add(MainFrame.loginID);
         friendList = new String[5];
         friendList[0] = "20373324:陈百铭";
         friendList[1] = "20373325:陈百铭";
         friendList[2] = "20373326:陈百铭";
         friendList[3] = "20373327:陈百铭";
-        friendList[4] = "20373328:陈百铭";
+        friendList[4] = "20373328:陈百铭";*/
         JLabel friendLabel = new JLabel("好友列表");
         this.add(friendLabel);
         friendLabel.setFont(new Font("微软雅黑", Font.BOLD, 15));
