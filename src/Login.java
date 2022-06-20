@@ -29,7 +29,7 @@ public class Login extends JFrame {
             jlb3 = new JLabel("密码:"),
             jlbtitle = new JLabel("登录界面");
     // 设置文本框组件
-    private JTextField admin = new JTextField(), name = new JTextField(), password = new JTextField();
+    private JTextField admin = new JTextField(), name = new JTextField(), password = new JPasswordField();
 
     public Login() {
         this.init();
