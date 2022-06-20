@@ -27,7 +27,8 @@ public class Login extends JFrame {
     private JLabel jlb1 = new JLabel("学号:"),
             jlb2 = new JLabel("姓名:"),
             jlb3 = new JLabel("密码:"),
-            jlbtitle = new JLabel("登录界面");
+            jlbtitle1 = new JLabel("欢迎来到场馆预约系统"),
+            jlbtitle = new JLabel("请登录");
     // 设置文本框组件
     private JTextField admin = new JTextField(), name = new JTextField(), password = new JPasswordField();
 
@@ -63,6 +64,7 @@ public class Login extends JFrame {
         add(jlb1);
         add(jlb2);
         add(jlb3);
+        add(jlbtitle1);
         add(jlbtitle);
 
         /*
@@ -79,9 +81,13 @@ public class Login extends JFrame {
         jlb3.setForeground(Color.BLACK);
         register.setBounds(95, 225, 90, 20);
         login.setBounds(315, 225, 90, 20);
-        jlbtitle.setBounds(180, 45, 200, 50);
+        jlbtitle1.setBounds(100, 15, 500, 50);
         Font f = new Font("微软雅黑", Font.BOLD, 30);
-        jlbtitle.setFont(f);
+        jlbtitle1.setFont(f);
+        jlbtitle1.setForeground(Color.BLACK);
+        jlbtitle.setBounds(180, 45, 200, 50);
+        Font f1 = new Font("微软雅黑", Font.BOLD, 30);
+        jlbtitle.setFont(f1);
         jlbtitle.setForeground(Color.BLACK);
 
         /*
